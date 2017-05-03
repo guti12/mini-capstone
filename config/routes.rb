@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  get '/gelato' => 'gelato#gelato_items'
+  get '/gelato' => 'gelatos#gelato_items'
 end

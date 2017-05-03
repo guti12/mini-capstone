@@ -1,6 +1,6 @@
 class GelatosController < ApplicationController
 	def gelato_items
-		@gelato = gelato.first
+		@gelato = Gelato.first
 		render 'gelato_view.html.erb'
 	end
 end
