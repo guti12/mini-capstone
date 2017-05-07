@@ -1,2 +1,8 @@
 <h1>Welcome to Rosie's Gelato</h1>
-<h2><% @gelato %></h2>
+<% @gelato.each do |gelato| %>
+	<h2>Flavor: <%= gelato.flavor %></h2>
+	<h2>Price: <%= gelato.price %></h2>
+	<h2><img src=<%= gelato.image %>></h2>
+	<h2>Description: <%= gelato.description %></h2>
+
+	<%end %>
