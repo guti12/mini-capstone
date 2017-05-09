@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   get '/gelatos/:id' => 'gelatos#show'
 
-  get 
+  get '/gelatos/:id/edit' => 'gelatos#edit'
+  patch '/gelatos/:id' => 'gelatos#update'
+
+  delete '/gelatos/:id' => 'gelatos#destroy'
+ 
 
 end

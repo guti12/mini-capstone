@@ -23,7 +23,35 @@ class GelatosController < ApplicationController
 												description: params[:description]
 												)
 		gelato.save
+		flash[:success] = "Flavor successfully created."
+		redirect_to "/gelatos/#{ gelato.id}"
 	end
+
+	def edit
+		@recipe = Gelato.find_by(id: params[:id])
+	end
+
+	def update
+		@recipe = Gelato.find_by(id: params[:id])
+		@recipe.assign_attributes(
+															flavor: params[:flavor],
+															price: params[:price],
+															description: params[:description])
+		recipe.save
+
+		flash[:success] = "Flavor successfully updated."
+		redirect_to "/gelatos/#{ gelato.id }"
+	end
+
+	def destroy
+		gelato = Gelato.find(params[:id])
+		gelato.destroy
+
+		flash[:success] = "Flavor successfully destroyed."
+		redirect_to "/gelatos"
+	end
+
+
 
 end
 
