@@ -1,9 +1,14 @@
-<h1>Cookbook App</h1>
+<div class="row">
 
-<% @gelatos.each do |gelato| %>
-	<h2><a href = "/gelatos/<%=gelato.id%>"><%= gelato.flavor %></a></h2>
-	<img src = <%= gelato.image %> >
-	<h4><%= gelato.price %></h4>
-	<h3><%= gelato.description %></h3>
-	<br>
-<%end%>
+	<% @gelatos.each do |gelato| %>
+		<div class="col-md-4" >
+			<div class="thumbnail well">	
+				<h2><a href = "/gelatos/<%=gelato.id%>"><%= gelato.flavor %></a></h2>
+				<img src = <%= gelato.image %> >
+				<h4><%= gelato.price %></h4>
+				<h3><%= gelato.description %></h3>
+				<br>
+			</div>
+		</div>
+	<%end%>
+</div>

@@ -1,6 +1,8 @@
 	<h2><%= @gelato.flavor %></h2>
 	<img src = <%= @gelato.image %> >
-	<h4><%= @gelato.price %></h4>
+
+	<h4><%= @gelato.sale_message + @gelato.tax %></h4>
+
 	<h3><%= @gelato.description %></h3>
 
 	<a href="/gelatos/<%= @gelato.id %>/edit">Edit Recipe</a>
