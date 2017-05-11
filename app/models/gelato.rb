@@ -1,16 +1,23 @@
 class Gelato < ApplicationRecord
 
 	def sale_message
-		if price.to_i <= 2
+		if discounted?
 			 "Discount item!" 
 		else
 			 "Everyday value!!" 
 		end
 	end
 
+	def discounted?
+		price < 3
+	end
+
 	def tax
-		tax_price = (price.to_i + (price.to_i * 0.09))
-		tax_price
+		price * 0.09
+	end
+
+	def total
+		price + tax
 	end
 
 end

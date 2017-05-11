@@ -1,7 +1,10 @@
 	<h2><%= @gelato.flavor %></h2>
 	<img src = <%= @gelato.image %> >
 
-	<h4><%= @gelato.sale_message + @gelato.tax %></h4>
+	<h4><%= @gelato.sale_message %></h4>
+	<p>class='<%= "red-price" if @gelato.discounted? %>'>Price: <%= number_to_currency(@gelato.price) %></p>
+	<h4><%= number_to_currency(@gelato.tax) %></h4>
+	<h4><%= @gelato.total %></h4>
 
 	<h3><%= @gelato.description %></h3>
 
