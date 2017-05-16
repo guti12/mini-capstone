@@ -6,11 +6,36 @@ class GelatosController < ApplicationController
 
 	def index
 		@gelatos = Gelato.all
+		sort_attribute = params[:sort]
+		sort_order = params[:sort_order]
+		discount = params[:discount]
+		search_term = params[:search_term]
+
+		if search_term
+			@gelatos = Gelato.where(
+															"flavor iLIKE ? OR description iLIKE ?", 
+															"%#{search_term}%",
+															"%#{search_term}%"
+															)
+		end
+
+		if discount
+			@gelatos = @gelatos.where("price < ?", discount)
+		end
+
+		if sort_attribute && sort_order
+			@gelatos = Gelato.all.order(sort_attribute => sort_order)
+		elsif sort_attribute
+			@gelatos = Gelato.all.order(sort_attribute)
+		end
 	end
 
 	def show 
-		gelato_id = params[:id]
-		@gelato = Gelato.find_by(id: gelato_id)
+		# if params[:id] == "random"
+		# 	@gelato = Gelato.all.sample
+		# else
+		# gelato_id = params[:id]
+		@gelato = Gelato.find(params[:id])
 	end
 
 	def new
@@ -28,16 +53,16 @@ class GelatosController < ApplicationController
 	end
 
 	def edit
-		@recipe = Gelato.find_by(id: params[:id])
+		@gelato = Gelato.find_by(id: params[:id])
 	end
 
 	def update
-		@recipe = Gelato.find_by(id: params[:id])
-		@recipe.assign_attributes(
+		@gelato = Gelato.find_by(id: params[:id])
+		@gelato.assign_attributes(
 															flavor: params[:flavor],
 															price: params[:price],
 															description: params[:description])
-		recipe.save
+		gelato.save
 
 		flash[:success] = "Flavor successfully updated."
 		redirect_to "/gelatos/#{ gelato.id }"
@@ -51,15 +76,9 @@ class GelatosController < ApplicationController
 		redirect_to "/gelatos"
 	end
 
-
+	def random
+		gelato = Gelato.all.sample
+		redirect_to "/gelatos/#{gelato.id}"
+	end
 
 end
-
-# <h1>All Contacts</h1>
-# <% @contacts.each do |contact| %>
-#   <h2>First Name: <a href="www.google.com"><%= contact.first_name %></a></h2>
-#   <h2>Last Name: <%= contact.last_name %></h2>
-#   <h2><span>Email:</span> <%= contact.email %></h2>
-#   <h2>Phone: <%= contact.phone_number %></h2>
-#   <br>
-# <% end %>

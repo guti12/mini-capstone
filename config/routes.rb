@@ -14,5 +14,6 @@ Rails.application.routes.draw do
 
   delete '/gelatos/:id' => 'gelatos#destroy'
  
+ 	get '/random' => 'gelatos#random'
 
 end

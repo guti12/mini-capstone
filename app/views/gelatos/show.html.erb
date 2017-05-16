@@ -8,5 +8,7 @@
 
 	<h3><%= @gelato.description %></h3>
 
+	<h5><%= @gelato.supplier.name %></h5>
+
 	<a href="/gelatos/<%= @gelato.id %>/edit">Edit Recipe</a>
 	<%= link_to "Delete", "/gelatos/#{ @gelato.id }", method: :delete %>

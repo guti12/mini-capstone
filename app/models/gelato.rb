@@ -1,4 +1,5 @@
 class Gelato < ApplicationRecord
+	belongs_to :supplier
 
 	def sale_message
 		if discounted?
