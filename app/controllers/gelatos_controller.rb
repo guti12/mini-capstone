@@ -12,7 +12,7 @@ class GelatosController < ApplicationController
 		search_term = params[:search_term]
 
 		if search_term
-			@gelatos = Gelato.where(
+			@gelatos = @gelato.where(
 															"flavor iLIKE ? OR description iLIKE ?", 
 															"%#{search_term}%",
 															"%#{search_term}%"
