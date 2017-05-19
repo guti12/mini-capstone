@@ -1,0 +1,30 @@
+<h1>Order Summary</h1>
+
+<h1>
+	<div>
+		Product ID: <%= @order.gelato_id %>
+	</div>
+
+	<div>
+		Quantity: <%= @order.quantity %>
+	</div>
+
+	<div>
+		Item ID: <%= @order.id %>
+	</div>
+
+	<div>
+		Subtotal: <%= number_to_currency(@order.subtotal) %>
+	</div>
+
+	<h3>
+		<div>
+			Tax: <%= number_to_currency(@order.tax) %>
+		</div>
+	</h3>
+
+	<div>
+		Total: <%= number_to_currency(@order.total) %>
+	</div>
+
+</h1>	

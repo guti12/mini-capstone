@@ -2,6 +2,8 @@ class Gelato < ApplicationRecord
 	belongs_to :supplier
 	has_many :images
 
+	has_many :orders
+
 	def sale_message
 		if discounted?
 			 "Discount item!" 
@@ -31,6 +33,17 @@ class Gelato < ApplicationRecord
 		price + tax
 	end
 
+	def find_subtotal(item, quantity)
+		@total_price = item.price * quantity.to_i
+	end
+
+	def find_tax
+		@tax = @total_price * 0.1
+	end		
+	
+	def find_total
+		@tax + @total_price
+	end
 
 
 end

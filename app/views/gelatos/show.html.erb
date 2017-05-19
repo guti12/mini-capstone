@@ -14,5 +14,15 @@
 
 	<h5><%= @gelato.supplier.name %></h5>
 
+	<%= form_tag '/orders', method: :post do %>
+		<h3>Product ID:<input type="text" name="gelato_id" value=<%= @gelato.id %>></h3>
+		<h3>Quantity:</h3><input type="text" name="quantity" value="1">
+		<%= submit_tag "Buy Now!"  %>	
+	<% end %>
+
+	<div>
+	
+	</div>
+
 	<a href="/gelatos/<%= @gelato.id %>/edit">Edit Recipe</a>
 	<%= link_to "Delete", "/gelatos/#{ @gelato.id }", method: :delete %>
