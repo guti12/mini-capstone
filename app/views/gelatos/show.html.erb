@@ -12,12 +12,29 @@
 		<img src="<%= @gelato.first_image_url %>" alt="<%= @gelato.flavor %>" class="img-responsive show-product">
 	</div>
 
+	<p>Categories</p>
+	<% @gelato.categories.each do |category| %>
+		<p><%= @category.name %></p>
+	<% end %>
+
 	<h5><%= @gelato.supplier.name %></h5>
 
 	<%= form_tag '/orders', method: :post do %>
-		<h3>Product ID:<input type="text" name="gelato_id" value=<%= @gelato.id %>></h3>
-		<h3>Quantity:</h3><input type="text" name="quantity" value="1">
-		<%= submit_tag "Buy Now!"  %>	
+
+		<div>
+			<%= label_tag :gelato_id %>
+			<%= text_field_tag :quantity, nil, placeholder: "Quantity" %>
+
+		</div>
+
+		<div>
+			<%= hidden_field_tag :gelato_id, @gelato.id %>
+			<%= submit_tag "Buy Now!", class: "btn btn-primary" %>
+
+<!-- 		</div>
+			<h3>Product ID:<input type="text" name="gelato_id" value=<%= @gelato.id %>></h3>
+			<h3>Quantity:</h3><input type="text" name="quantity" value="1">
+			<%= submit_tag "Buy Now!"  %>	 -->
 	<% end %>
 
 	<div>

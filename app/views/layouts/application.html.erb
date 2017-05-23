@@ -63,7 +63,12 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                 <ul class="dropdown-menu">
                   <li><a href="/random">Random Flavor</a></li>
-                  <li><a href="#">Another action</a></li>
+                  
+                  <% Category.all.each do |category| %>
+                    <li><a href="/products?category=<%= category.name %>"<%= category.name.titleize %></a></li>
+                  <% end %>
+
+                  <li><a href="/gelatos?category=wearable">Wearable</a></li>
                   <li><a href="#">Something else here</a></li>
                   <li role="separator" class="divider"></li>
                   <li><a href="#">Separated link</a></li>

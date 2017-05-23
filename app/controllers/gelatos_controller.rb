@@ -10,6 +10,11 @@ class GelatosController < ApplicationController
 		sort_order = params[:sort_order]
 		discount = params[:discount]
 		search_term = params[:search_term]
+		category = params[:category]
+
+		if category	
+			@gelatos = Category.find_by(name: "wearable").gelatos
+		end
 
 		if search_term
 			@gelatos = @gelato.where(

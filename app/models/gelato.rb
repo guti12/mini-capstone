@@ -3,6 +3,8 @@ class Gelato < ApplicationRecord
 	has_many :images
 
 	has_many :orders
+	has_many :category_gelato
+	has_many :categories, through: :category_gelato
 
 	def sale_message
 		if discounted?

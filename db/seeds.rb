@@ -18,29 +18,41 @@
 
 # gelato.save
 
-Image.create!([
-	{ url: "http://cf.savorysimple.net/v1/wp-content/uploads/2014/02/web-Vanilla-Milk-Gelato-017.jpg",
-		gelato_id: 1,
-		name: "vanilla gelato 1"
-	},
-	{ url: "http://www.saveur.com/sites/saveur.com/files/styles/large_1x_/public/images/2015/11/sicilian-vanilla-gelato-2000x1500.jpg?itok=e8KPY9hy",
-		gelato_id: 1,
-		name: "vanilla gelato 2"
-	},
-	{
-		url: "http://aapplemint.com/wp-content/uploads/2010/01/vanilla-gelato2.jpg",
-		gelato_id: 1,
-		name: "vanilla gelato 3"
-	},
-	{
-		url: "https://i.ytimg.com/vi/SMnB2SB6WhA/maxresdefault.jpg",
-		gelato_id: 2,
-		name: "chocolate gelato 1"
-	},
-	{
-		url: "http://cookingontheweekends.com/wp-content/uploads/2012/04/April2-choc-gelato21.jpg",
-		gelato_id: 2,
-		name: "chocolate gelato 2"
-	}
-	])
+# Image.create!([
+# 	{ url: "http://cf.savorysimple.net/v1/wp-content/uploads/2014/02/web-Vanilla-Milk-Gelato-017.jpg",
+# 		gelato_id: 1,
+# 		name: "vanilla gelato 1"
+# 	},
+# 	{ url: "http://www.saveur.com/sites/saveur.com/files/styles/large_1x_/public/images/2015/11/sicilian-vanilla-gelato-2000x1500.jpg?itok=e8KPY9hy",
+# 		gelato_id: 1,
+# 		name: "vanilla gelato 2"
+# 	},
+# 	{
+# 		url: "http://aapplemint.com/wp-content/uploads/2010/01/vanilla-gelato2.jpg",
+# 		gelato_id: 1,
+# 		name: "vanilla gelato 3"
+# 	},
+# 	{
+# 		url: "https://i.ytimg.com/vi/SMnB2SB6WhA/maxresdefault.jpg",
+# 		gelato_id: 2,
+# 		name: "chocolate gelato 1"
+# 	},
+# 	{
+# 		url: "http://cookingontheweekends.com/wp-content/uploads/2012/04/April2-choc-gelato21.jpg",
+# 		gelato_id: 2,
+# 		name: "chocolate gelato 2"
+# 	}
+# 	])
 	
+CategoryGelato.create!([
+												{category_id: 4, gelato_id: 1},
+												{category_id: 4, gelato_id: 2},
+												{category_id: 5, gelato_id: 3},
+												{category_id: 5, gelato_id: 4},
+												{category_id: 5, gelato_id: 5},
+												{category_id: 7, gelato_id: 1},
+												{category_id: 7, gelato_id: 2},
+												{category_id: 6, gelato_id: 3},
+												{category_id: 6, gelato_id: 4},
+												{category_id: 6, gelato_id: 5}
+												])
