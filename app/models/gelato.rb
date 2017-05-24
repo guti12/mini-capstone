@@ -6,6 +6,9 @@ class Gelato < ApplicationRecord
 	has_many :category_gelato
 	has_many :categories, through: :category_gelato
 
+	has_many :carted_products
+	has_many :orders, through: :carted_products
+
 	def sale_message
 		if discounted?
 			 "Discount item!" 
