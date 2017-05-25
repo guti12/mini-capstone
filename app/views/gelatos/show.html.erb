@@ -12,14 +12,9 @@
 		<img src="<%= @gelato.first_image_url %>" alt="<%= @gelato.flavor %>" class="img-responsive show-product">
 	</div>
 
-	<p>Categories</p>
-	<% @gelato.categories.each do |category| %>
-		<p><%= @category.name %></p>
-	<% end %>
 
-	<h5><%= @gelato.supplier.name %></h5>
 
-	<%= form_tag '/orders', method: :post do %>
+	<%= form_tag '/carted_products', method: :post do %>
 
 		<div>
 			<%= label_tag :gelato_id %>

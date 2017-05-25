@@ -1,17 +1,28 @@
 class OrdersController < ApplicationController
 	def create
 
-		item = Gelato.find(params[:gelato_id])
+		carted_products = current_user.cart
+
+		subtotal = 0
+
+		carted_products.each do |carted_products|
+			subtotal += carted_products.product.price * carted_products.quantity
+		end
+
+		tax = subtotal * 0.09
+		total = subtotal + tax
 
 		order = Order.new(
 											user_id: current_user.id,
-											quantity: params[:quantity],
-											gelato_id: params[:gelato_id],
-											subtotal: item.find_subtotal(item, params[:quantity]),
-											tax: item.find_tax,
-											total: item.find_total
+											subtotal: subtotal,
+											tax: tax,
+											total: total
 											)
+
 		order.save
+
+		carted_products.update_all(status: "purchased", order_id: order.id)
+		
 		redirect_to "/orders/#{order.id}"
 	end
 

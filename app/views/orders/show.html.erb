@@ -2,17 +2,9 @@
 
 <div class="well">
 	<h1>
-		<div>
-			Product ID: <%= @order.gelato_id %>
-		</div>
-
-		<div>
-			Quantity: <%= @order.quantity %>
-		</div>
-
-		<div>
-			Item ID: <%= @order.id %>
-		</div>
+		<% @carted_products.each do |carted_product| %>
+		<h3><%= carted_product.gelato.flavor %> - <%= carted_product.gelato.price %> X <%= carted_product.quantity %></h3>
+		<% end %>
 
 		<div>
 			Subtotal: <%= number_to_currency(@order.subtotal) %>
