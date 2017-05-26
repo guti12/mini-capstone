@@ -1,10 +1,16 @@
 class GelatosController < ApplicationController
+
+before_action :authenticate_admin!, except: [:index, :show, :random]
+
 	def gelato_items
 		@gelato = Gelato.all
 		render 'gelato_view.html.erb'
 	end
 
 	def index
+
+		@cart_count = current_user.cart.count
+
 		@gelatos = Gelato.all
 		sort_attribute = params[:sort]
 		sort_order = params[:sort_order]
@@ -33,28 +39,31 @@ class GelatosController < ApplicationController
 		elsif sort_attribute
 			@gelatos = Gelato.all.order(sort_attribute)
 		end
+	
 	end
 
 	def show 
-		# if params[:id] == "random"
-		# 	@gelato = Gelato.all.sample
-		# else
-		# gelato_id = params[:id]
 		@gelato = Gelato.find(params[:id])
 	end
 
 	def new
-		
+		@product = Product.new
 	end
 
 	def create
+
 		gelato = Gelato.new(flavor: params[:flavor],
 												price: params[:price],
 												description: params[:description]
 												)
-		gelato.save
-		flash[:success] = "Flavor successfully created."
-		redirect_to "/gelatos/#{ gelato.id}"
+		if gelato.save
+			flash[:success] = "Product Created"
+			redirect_to "/gelato/#{gelato.id}"
+		else
+			@errors = product.errors.full_messages
+			render 'new.html.erb'
+		end
+
 	end
 
 	def edit

@@ -9,6 +9,13 @@ class Gelato < ApplicationRecord
 	has_many :carted_products
 	has_many :orders, through: :carted_products
 
+	validates :flavor, presence: true
+	validates :flavor, uniqueness: true
+	validates :price, presence: true
+	validates :price, numericality: true
+	validates :description, presence: true
+	validates :description, length: {maximum: 500}
+
 	def sale_message
 		if discounted?
 			 "Discount item!" 

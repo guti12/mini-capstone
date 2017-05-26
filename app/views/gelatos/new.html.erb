@@ -1,12 +1,16 @@
+<% @errors.each do |error| %>
+	<h2><%= error %></h2>
+<% end %>
+
 <h1>New Flavor</h1>
 
 <%= form_tag "/gelatos", method: :post do %>
 	<div>
-		Flavor: <input type="text" name="flavor">
+		Flavor: <input type="text" name="flavor" value="<%= @gelato.flavor %>"
 	</div>
 
 	<div>
-		Price: <input type="text" name="price">
+		Price: <input type="text" name="price" value="<%= @gelato.price %>"
 	</div>
 
 	<div>
