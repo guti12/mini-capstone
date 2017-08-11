@@ -9,7 +9,7 @@ before_action :authenticate_admin!, except: [:index, :show, :random]
 
 	def index
 
-		@cart_count = current_user.cart.count
+		@cart_count = current_user.carted_products.count
 
 		@gelatos = Gelato.all
 		sort_attribute = params[:sort]
